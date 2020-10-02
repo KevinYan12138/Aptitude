@@ -66,6 +66,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
                 textStyle: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               )),
           elevation: 0.0,
+          centerTitle: true,
           backgroundColor: Colors.white,
           actions: <Widget>[
             IconButton(

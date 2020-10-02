@@ -9,7 +9,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import '../Auth/UserRepository.dart';
 
-
 class ManagerBottomNavigation extends StatefulWidget {
   final FirebaseUser user;
 
@@ -19,7 +18,6 @@ class ManagerBottomNavigation extends StatefulWidget {
 }
 
 class _ManagerBottomNavigationState extends State<ManagerBottomNavigation> {
-
   int _currentap = 0;
 
   Videos videosPage;
@@ -44,24 +42,35 @@ class _ManagerBottomNavigationState extends State<ManagerBottomNavigation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: new AppBar(
-        title: new Text('Aptitude', style: GoogleFonts.longCang(textStyle: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),),),
-        backgroundColor: Colors.blueAccent,
-        actions: <Widget>[
-          IconButton(
-              icon: Icon(Icons.exit_to_app, color: Colors.black,),
-              onPressed: () => Provider.of<UserRepository>(context, listen: false).signOut()
-          )
-        ],
-        leading: IconButton(
-            icon: Icon(Icons.person, color: Colors.black,),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => Profile()),
-              );
-            }),
-      ),
+        appBar: new AppBar(
+          title: new Text(
+            'Aptitude',
+            style: GoogleFonts.longCang(
+              textStyle: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+            ),
+          ),
+          backgroundColor: Colors.blueAccent,
+          centerTitle: true,
+          actions: <Widget>[
+            IconButton(
+                icon: Icon(
+                  Icons.exit_to_app,
+                  color: Colors.black,
+                ),
+                onPressed: () => Provider.of<UserRepository>(context, listen: false).signOut())
+          ],
+          leading: IconButton(
+              icon: Icon(
+                Icons.person,
+                color: Colors.black,
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Profile()),
+                );
+              }),
+        ),
         body: PageStorage(
           child: currentPage,
           bucket: bucket,
@@ -82,7 +91,6 @@ class _ManagerBottomNavigationState extends State<ManagerBottomNavigation> {
             new BottomNavigationBarItem(icon: new Icon(Icons.receipt), title: new Text("Recipes")),
             new BottomNavigationBarItem(icon: new Icon(Icons.article), title: new Text("Articles")),
           ],
-        )
-    );
+        ));
   }
 }
