@@ -97,6 +97,7 @@ class _LogInPageState extends State<LogInPage> {
                     _showSecondaryButton(),
                     _showTerms(),
                     _showPrimaryButton(),
+                    _showAnonymousButton(),
                     _resetPassword(),
                   ],
                 ),
@@ -215,14 +216,14 @@ class _LogInPageState extends State<LogInPage> {
                 style: TextStyle(color: Colors.black, fontSize: 12),
                 children: <TextSpan>[
                   TextSpan(
-                    text: "I agree to Organizers's ",
+                    text: "I agree to Aptitude's ",
                     style: TextStyle(color: Colors.black, fontSize: 12),
                   ),
                   TextSpan(
                     text: "Terms and Conditions",
                     recognizer: TapGestureRecognizer()
                       ..onTap = () {
-                        launch('https://guanwenyan.com/#/Organizers/Terms');
+                        launch('https://oneaptitude.weebly.com/term-and-condition.html');
                       },
                     style: TextStyle(color: Colors.blue, fontSize: 12, decoration: TextDecoration.underline),
                   ),
@@ -313,7 +314,7 @@ class _LogInPageState extends State<LogInPage> {
                   });
                 }
               } else {
-                if (_agree && _formMode == FormMode.SIGNUP) {
+                if (_agree) {
                   String id = await user.register(_email, _password);
 
                   if (id != null) {
@@ -332,6 +333,30 @@ class _LogInPageState extends State<LogInPage> {
           },
           child: _formMode == FormMode.LOGIN ? new Text('Login', style: new TextStyle(fontSize: 18.0, color: Colors.black)) : new Text('Create account', style: new TextStyle(fontSize: 18.0, color: Colors.black)),
         ));
+  }
+
+  Widget _showAnonymousButton() {
+    Size size = MediaQuery.of(context).size;
+    return Visibility(
+      visible: _formMode == FormMode.LOGIN ? true : false,
+      child: Container(
+          height: size.height * 0.06,
+          width: size.width * 0.8,
+          margin: EdgeInsets.symmetric(vertical: 10),
+          child: RaisedButton(
+            color: Colors.grey,
+            shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(50.0), side: BorderSide(color: Colors.white)),
+            onPressed: () async {
+              final user = Provider.of<UserRepository>(context, listen: false);
+
+              SharedPreferences pref = await SharedPreferences.getInstance();
+              await pref.setString("status", 'anonymous');
+
+              await user.anonymousSignIn();
+            },
+            child: Text('Sign in anonymously'),
+          )),
+    );
   }
 
   Widget _showSecondaryButton() {
