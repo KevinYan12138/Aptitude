@@ -117,7 +117,7 @@ class _RecipesState extends State<Recipes> {
           }),
       floatingActionButton: Container(
         child: Visibility(
-          visible: status.toString() == 'member' ? false : true,
+          visible: status.toString() == 'admin' ? true : false,
           child: FloatingActionButton(
             onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => AddRecipes())),
             child: Icon(Icons.add),

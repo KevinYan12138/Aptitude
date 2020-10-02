@@ -110,7 +110,7 @@ class _VideosState extends State<Videos> {
           }),
       floatingActionButton: Container(
         child: Visibility(
-          visible: status.toString() == 'member' ? false : true,
+          visible: status.toString() == 'admin' ? true : false,
           child: FloatingActionButton(
             onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => AddVideos())),
             child: Icon(Icons.add),

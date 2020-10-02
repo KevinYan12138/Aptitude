@@ -345,7 +345,7 @@ class _LogInPageState extends State<LogInPage> {
           margin: EdgeInsets.symmetric(vertical: 10),
           child: RaisedButton(
             color: Colors.grey,
-            shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(50.0), side: BorderSide(color: Colors.white)),
+            shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(50.0), side: BorderSide(color: Colors.grey)),
             onPressed: () async {
               final user = Provider.of<UserRepository>(context, listen: false);
 
