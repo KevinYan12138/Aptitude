@@ -87,7 +87,7 @@ class _VideosState extends State<Videos> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) => VideoView(
-                                            videoId: document['link'],
+                                            videoId: document['videoId'],
                                           )));
                             },
                             child: Center(

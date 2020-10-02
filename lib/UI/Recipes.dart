@@ -100,7 +100,12 @@ class _RecipesState extends State<Recipes> {
                                   child: Container(
                                     height: 125,
                                     width: size.width * 0.95,
-                                    child: Center(child: Text(document['title'], style: GoogleFonts.openSans(textStyle: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold)))),
+                                    child: Center(
+                                        child: Text(
+                                      document['title'],
+                                      style: GoogleFonts.openSans(textStyle: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold)),
+                                      textAlign: TextAlign.center,
+                                    )),
                                   ),
                                 ),
                               ),
