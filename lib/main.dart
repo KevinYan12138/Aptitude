@@ -30,7 +30,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
@@ -45,9 +44,13 @@ class _MyHomePageState extends State<MyHomePage> {
             case Status.Authenticating:
               return Splash();
             case Status.UserAuthenticated:
-              return BottomNavigation(user: user.user,);
+              return BottomNavigation(
+                user: user.user,
+              );
             case Status.AdminAuthenticated:
-              return ManagerBottomNavigation(user: user.user,);
+              return ManagerBottomNavigation(
+                user: user.user,
+              );
           }
         },
       ),

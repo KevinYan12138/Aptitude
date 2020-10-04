@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class VideoView extends StatefulWidget {
-
   final String videoId;
 
   const VideoView({Key key, this.videoId}) : super(key: key);
@@ -13,7 +12,6 @@ class VideoView extends StatefulWidget {
 }
 
 class _VideoViewState extends State<VideoView> {
-
   static String videoId = '';
 
   bool _isPlayerReady = false;
@@ -21,12 +19,12 @@ class _VideoViewState extends State<VideoView> {
   YoutubePlayerController _controller;
 
   @override
-  void initState() { 
+  void initState() {
     super.initState();
     videoId = widget.videoId;
     _controller = YoutubePlayerController(
-    initialVideoId: videoId,
-    flags: YoutubePlayerFlags(
+      initialVideoId: videoId,
+      flags: YoutubePlayerFlags(
         autoPlay: true,
         mute: false,
       ),
@@ -45,8 +43,6 @@ class _VideoViewState extends State<VideoView> {
     super.dispose();
   }
 
-   
-
   @override
   Widget build(BuildContext context) {
     return YoutubePlayerBuilder(
@@ -59,16 +55,21 @@ class _VideoViewState extends State<VideoView> {
         progressIndicatorColor: Colors.blue,
         topActions: [
           Expanded(
-            child: Text(_controller.metadata.title, style: TextStyle(color: Colors.white,fontSize: 18.0,),
-            overflow: TextOverflow.ellipsis,
-            maxLines: 1,
-            ), 
+            child: Text(
+              _controller.metadata.title,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18.0,
+              ),
+              overflow: TextOverflow.ellipsis,
+              maxLines: 1,
+            ),
           )
         ],
-        onReady: (){
+        onReady: () {
           _isPlayerReady = true;
         },
-        onEnded: (data){
+        onEnded: (data) {
           deactivate();
         },
       ),
